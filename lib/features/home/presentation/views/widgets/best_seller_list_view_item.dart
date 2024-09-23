@@ -49,7 +49,7 @@ class BestSellerListViewItem extends StatelessWidget {
                         'Harry Potter and the Goblet of Fire',
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
-                        style: Styles.titleStyle20.copyWith(
+                        style: Styles.textStyle20.copyWith(
                           fontFamily: kGtSectraFine,
                         ),
                       ),
@@ -59,7 +59,7 @@ class BestSellerListViewItem extends StatelessWidget {
                     ),
                     const Text(
                       'J.K. Rowling',
-                      style: Styles.titleStyle14,
+                      style: Styles.textStyle14,
                     ),
                     const SizedBox(
                       height: 3,
@@ -68,7 +68,7 @@ class BestSellerListViewItem extends StatelessWidget {
                       children: [
                         Text(
                           '19.99&',
-                          style: Styles.titleStyle20.copyWith(
+                          style: Styles.textStyle20.copyWith(
                             fontWeight: FontWeight.bold,
                           ),
                         ),
