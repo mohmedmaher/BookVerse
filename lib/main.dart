@@ -1,11 +1,9 @@
 import 'package:book_verse/constant.dart';
-import 'package:book_verse/core/utils/api_service.dart';
 import 'package:book_verse/core/utils/app_router.dart';
 import 'package:book_verse/core/utils/service_locator.dart';
 import 'package:book_verse/features/home/data/repos/home_repo_impl.dart';
 import 'package:book_verse/features/home/presentation/manger/featured_books_cubit/featured_books_cubit.dart';
 import 'package:book_verse/features/home/presentation/manger/newset_books_cubit/newset_books_cubit.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -25,7 +23,7 @@ class BookVerseApp extends StatelessWidget {
         BlocProvider(
           create: (context) => FeaturedBooksCubit(
             getIt.get<HomeRepoImpl>(),
-          ),
+          )..fetchFeaturedBooks(),
         ),
         BlocProvider(
           create: (context) => NewsetBooksCubit(
