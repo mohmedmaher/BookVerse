@@ -1,3 +1,4 @@
+import 'package:book_verse/constant.dart';
 import 'package:book_verse/core/widgets/custom_error_widget.dart';
 import 'package:book_verse/core/widgets/custom_loading_indicator.dart';
 import 'package:book_verse/features/home/presentation/manger/featured_books_cubit/featured_books_cubit.dart';
@@ -25,7 +26,8 @@ class FeaturedBooksListView extends StatelessWidget {
                   padding: const EdgeInsets.only(right: 16.0),
                   child: CustomBookImage(
                     imageUrl:
-                        state.books[index].volumeInfo.imageLinks.thumbnail,
+                        state.books[index].volumeInfo.imageLinks?.thumbnail ??
+                            kNoBookCover,
                   ),
                 ),
               ),
