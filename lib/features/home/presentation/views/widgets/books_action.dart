@@ -1,6 +1,6 @@
+import 'package:book_verse/core/utils/functions/launch_url.dart';
 import 'package:book_verse/features/home/data/models/book_model/book_model.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../core/widgets/custom_button.dart';
 
@@ -29,11 +29,8 @@ class BooksAction extends StatelessWidget {
           ),
           Expanded(
             child: CustomButton(
-              onPressed: () async {
-                Uri uri = Uri.parse(bookModel.volumeInfo.previewLink!);
-                if (await canLaunchUrl(uri)) {
-                  await launchUrl(uri);
-                }
+              onPressed: () {
+                launchCustomUrl(context, bookModel.volumeInfo.previewLink);
               },
               backgroundColor: const Color(0xffEF8262),
               textColor: Colors.white,
@@ -42,11 +39,19 @@ class BooksAction extends StatelessWidget {
                 topRight: Radius.circular(16),
                 bottomRight: Radius.circular(16),
               ),
-              text: 'Preview',
+              text: getText(bookModel),
             ),
           ),
         ],
       ),
     );
+  }
+
+  String getText(BookModel bookModel) {
+    if (bookModel.volumeInfo.previewLink == null) {
+      return 'Not Available';
+    } else {
+      return 'Preview';
+    }
   }
 }
