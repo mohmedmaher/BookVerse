@@ -5,6 +5,9 @@ import 'package:book_verse/features/home/presentation/manger/similar_books_cubit
 import 'package:book_verse/features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../../../../core/utils/app_router.dart';
 
 class SimilarBooksListView extends StatelessWidget {
   const SimilarBooksListView({super.key});
@@ -21,10 +24,16 @@ class SimilarBooksListView extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) => Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                child: CustomBookImage(
-                  imageUrl:
-                      state.books[index].volumeInfo.imageLinks?.thumbnail ??
-                          kNoBookCover,
+                child: GestureDetector(
+                  onTap: () {
+                    GoRouter.of(context).push(AppRouter.kBookDetailsView,
+                        extra: state.books[index]);
+                  },
+                  child: CustomBookImage(
+                    imageUrl:
+                        state.books[index].volumeInfo.imageLinks?.thumbnail ??
+                            kNoBookCover,
+                  ),
                 ),
               ),
             ),
